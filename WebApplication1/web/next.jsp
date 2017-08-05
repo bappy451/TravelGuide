@@ -182,21 +182,22 @@
         int a,b;
         a=gyn+ryn+foodtype;
         b=day*a;
-        int remain = bgt-b;
-        if(div.equals("Chittagong")) fare = 2*480;
-        else if (div.equals("Sylhet")) fare = 2*470;
-        else if (div.equals("Bandarban")) fare = 2*600;
-        else if (div.equals("Rangamati")) fare = 2*600;
-        else if (div.equals("Cox's Bazar")) fare = 2*800;
-        else fare = (2*1000)+500;
-        int total = remain + fare;
+        
+        if(div.equals("Chittagong")) {fare = 960;}
+        else if (div.equals("Sylhet")) {fare =940;}
+        else if (div.equals("Bandarban")) {fare = 1200;}
+        else if (div.equals("Rangamati")) {fare = 1200;}
+        else if (div.equals("Cox's Bazar")) {fare = 1600;}
+        else fare = 2500;
+        
+        int total = bgt-(b+fare);
         if(total>=0) 
         { 
         %>
         <br><br><br><br><br><br><br>
-        <span align="center" style="border:1px solid red;">
-        
-        <H1>You Can Go To 
+        <span align="center" style="border:1px solid red; ">
+            
+            <H1 style="color:white;">You Can Go To 
             <%out.print(div);%>
             Within Your 
             <%out.print(bgt);%>
@@ -205,9 +206,13 @@
             day .<br>
             You can save
             <%out.print(total);%>
-            Taka. <br> HAPPY TRAVELING </h1>
+            Taka.</h1>
         <%  }
-            %>
+else {%> <br><br><br><br><br><br><br>
+        <span align="center" style="border:1px solid red; ">
+            
+            <H1 style="color:white;">There is not enough BUDGET. You have <%out.print(total*-1);%> taka Short. </h1>
+<%}%>     
     </span>
         </body>
 </html>
